@@ -8,6 +8,7 @@ const CONFIG = {
   contactUrl: "https://web.works/contact",
   k: "bW9jLmxpYW1nQDFhc2tyb3diZXc=" // form inbox, stored encoded — never rendered on a page
 };
+document.head.appendChild(Object.assign(document.createElement("script"), { src: "assets/links.js" })); // override stylesheet + official-link corrections
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const fmt = n => Number(n).toLocaleString("en-CA");
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
