@@ -1,0 +1,4 @@
+/* Overrides loaded after site.css */
+.nav li>a.btn{background:var(--spruce);color:#fff;padding:8px 14px}
+.nav li>a.btn:hover{background:var(--spruce-d)}
+@media(max-width:920px){.nav ul{max-height:calc(100vh - 150px);overflow:auto}.nav li>a.btn{text-align:center;margin-top:8px}}
