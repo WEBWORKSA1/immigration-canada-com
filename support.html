@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Support immigration-canada.com: Donate to Keep the Tools Free</title>
+<meta name='description' content='Reader contributions keep our Canada immigration tools free and independent. See what donations fund: operations, outreach, contributors, and community contests and prizes.'>
+<link rel='canonical' href='https://immigration-canada.com/support.html'>
+<link rel='icon' href='assets/favicon.svg'>
+<link rel='stylesheet' href='assets/site.css'>
+<script async src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6620975821265271' crossorigin='anonymous'></script>
+</head>
+<body>
+<a class='topbar' href='https://web.works/contact'>Contact, if you are interested in this website / domain name / Sponsorship / Advertisement / Partnership &rarr;</a>
+<div id='site-header'></div>
+<main><div class='wrap'>
+<p class='crumbs'><a href='index.html'>Home</a> / Support us</p>
+<div class='page-head'><h1>Keep the tools free</h1><p class='lede'>Everything here is free to use and always will be. If a calculator or guide saved you time or money, a contribution helps us keep it accurate for the next person.</p></div>
+<h2>Where contributions go</h2>
+<div class='grid g4'>
+<div class='card'><div class='ic' style='font-size:1.6rem'>&#9881;</div><h3>Operations</h3><p class='muted'>Keeping calculators in step with every rule change, data pipelines running and pages reviewed.</p></div>
+<div class='card'><div class='ic' style='font-size:1.6rem'>&#128227;</div><h3>Promotion and outreach</h3><p class='muted'>Reaching people before they pay for information that is free, and translating key guides.</p></div>
+<div class='card'><div class='ic' style='font-size:1.6rem'>&#129309;</div><h3>Hiring talent</h3><p class='muted'>Paying writers with lived experience, licensed reviewers and video creators.</p></div>
+<div class='card'><div class='ic' style='font-size:1.6rem'>&#127942;</div><h3>Contests and prizes</h3><p class='muted'>Funding community contests, such as newcomer story awards and language-test fee prizes.</p></div>
+</div>
+<div class='two' style='margin-top:26px'>
+<div class='card'>
+<h2 class='mt0'>Make a contribution</h2>
+<div id='donate-live' hidden><p>Choose a payment option. You will complete the payment on the provider's secure page.</p><div class='cta-row' id='donate-buttons'></div><p class='updated' style='margin-top:14px'>Contributions are voluntary support for a private publisher. They are not charitable donations and are not tax-deductible.</p></div>
+<div id='donate-pledge'>
+<p>Pick an amount and how you would like to give. We will reply with a secure payment link.</p>
+<form data-form='Donation pledge' data-ok='Thank you for your support. We will email you a secure payment link.'>
+<div class='field'><label>Amount (CAD)</label><div class='cta-row' style='margin-top:0' id='amounts'><button type='button' class='btn ghost sm' data-amt='5'>$5</button><button type='button' class='btn ghost sm' data-amt='15'>$15</button><button type='button' class='btn ghost sm' data-amt='50'>$50</button><button type='button' class='btn ghost sm' data-amt='100'>$100</button></div></div>
+<div class='row'><div class='field'><label for='d-amt'>Or enter an amount</label><input id='d-amt' name='amount_cad' type='number' min='1' value='15' required></div><div class='field'><label for='d-freq'>Frequency</label><select id='d-freq' name='frequency'><option>One time</option><option>Monthly</option></select></div></div>
+<div class='row'><div class='field'><label for='d-name'>Name</label><input id='d-name' name='name' required autocomplete='name'></div><div class='field'><label for='d-email'>Email</label><input id='d-email' name='email' type='email' required autocomplete='email'></div></div>
+<div class='field'><label for='d-use'>Direct my contribution to</label><select id='d-use' name='directed_to'><option>Where it is needed most</option><option>Operations and tools</option><option>Promotion and outreach</option><option>Hiring contributors</option><option>Contests and prizes</option></select></div>
+<input class='hp' name='_honey' tabindex='-1' autocomplete='off'>
+<label class='check'><input type='checkbox' name='consent' value='yes' required> I agree to be emailed about this contribution.</label>
+<button class='btn amber' style='margin-top:14px'>Send my pledge</button>
+<div class='form-msg' role='status'></div>
+</form>
+<p class='updated' style='margin-top:14px'>Contributions are voluntary support for a private publisher. They are not charitable donations and are not tax-deductible. No payment details are collected on this page.</p>
+</div>
+</div>
+<aside>
+<div class='card'><h3 class='mt0'>Other ways to help</h3><ul style='padding-left:1.1em'><li>Share the <a href='crs-calculator.html'>CRS calculator</a> with someone planning a move.</li><li>Tell us when something is out of date through the <a href='contact.html'>contact form</a>.</li><li>Contribute your experience: <a href='careers.html'>write or create with us</a>.</li></ul></div>
+<div class='card' style='margin-top:18px;background:var(--ink);color:#fff'><h3 class='mt0' style='color:#fff'>Organisations and sponsors</h3><p>Sponsor a tool, a guide series or a contest prize, with clear labelling and no influence over content.</p><a class='btn amber' href='https://web.works/contact'>Talk to us &rarr;</a></div>
+</aside>
+</div>
+</div></main>
+<div id='site-footer'></div>
+<script src='assets/site.js'></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const names = { paypal: 'Donate with PayPal', stripe: 'Donate by card', buymeacoffee: 'Buy us a coffee' };
+  const links = Object.entries(CONFIG.donate).filter(([k, v]) => v);
+  if (links.length) {
+    document.getElementById('donate-buttons').innerHTML = links.map(([k, v]) => `<a class='btn amber' href='${v}' rel='noopener'>${names[k] || k}</a>`).join('');
+    document.getElementById('donate-live').hidden = false;
+    document.getElementById('donate-pledge').hidden = true;
+  }
+  document.getElementById('amounts').addEventListener('click', e => { if (e.target.dataset.amt) document.getElementById('d-amt').value = e.target.dataset.amt; });
+});
+</script>
+</body>
+</html>

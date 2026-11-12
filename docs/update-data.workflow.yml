@@ -1,0 +1,33 @@
+# Automatic data refresh. To switch it on, move this file to .github/workflows/update-data.yml
+# (GitHub web editor: open this file, click the pencil, rename the path, commit).
+name: Refresh site data
+on:
+  schedule:
+    - cron: '17 */4 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: refresh-data
+  cancel-in-progress: true
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/update-data.mjs
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- data; then
+            echo 'No data changes'
+          else
+            git config user.name 'site-data-bot'
+            git config user.email 'actions@users.noreply.github.com'
+            git add data
+            git commit -m 'data: automatic refresh'
+            git pull --rebase
+            git push
+          fi
