@@ -1,4 +1,8 @@
 /* Overrides loaded after site.css */
+.btn{font-family:inherit;font-size:1rem;font-weight:700;line-height:1.2}
+.btn.sm{font-size:.9rem}
 .nav li>a.btn{background:var(--spruce);color:#fff;padding:8px 14px}
 .nav li>a.btn:hover{background:var(--spruce-d)}
+.hero .grid .grid{grid-template-columns:repeat(2,1fr);gap:18px;align-items:stretch}
 @media(max-width:920px){.nav ul{max-height:calc(100vh - 150px);overflow:auto}.nav li>a.btn{text-align:center;margin-top:8px}}
+@media(max-width:600px){.hero .grid .grid{grid-template-columns:1fr}}
