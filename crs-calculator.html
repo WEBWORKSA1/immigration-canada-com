@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>CRS Calculator 2026: Express Entry Score with the New Labour Market Integration Points</title>
+<meta name='description' content='Free CRS calculator using the IRCC grid in force since 3 November 2026, including high-wage Canadian experience and job offer points. See your score against the latest cut-offs.'>
+<link rel='canonical' href='https://immigration-canada.com/crs-calculator.html'>
+<link rel='icon' href='assets/favicon.svg'>
+<link rel='stylesheet' href='assets/site.css'>
+<script async src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6620975821265271' crossorigin='anonymous'></script>
+</head>
+<body>
+<a class='topbar' href='https://web.works/contact'>Contact, if you are interested in this website / domain name / Sponsorship / Advertisement / Partnership &rarr;</a>
+<div id='site-header'></div>
+<main><div class='wrap'>
+<p class='crumbs'><a href='index.html'>Home</a> / Tools / CRS Calculator</p>
+<div class='page-head'><h1>CRS Calculator</h1><p class='lede'>Estimate your Comprehensive Ranking System score on the grid IRCC has used since 3 November 2026. Your score updates as you answer.</p></div>
+<div class='two'>
+<form id='crs' class='card' onsubmit='return false'>
+<fieldset><legend>About you</legend>
+<div class='row'><div class='field'><label for='marital'>Applying with a spouse or partner?</label><select id='marital' name='marital'><option value='single'>No, or my partner is a citizen or PR / not coming</option><option value='spouse'>Yes, my spouse or partner is coming with me</option></select></div>
+<div class='field'><label for='age'>Age</label><input id='age' name='age' type='number' min='17' max='60' value='29'></div></div>
+<div class='row'><div class='field'><label for='edu'>Highest education</label><select id='edu' name='edu' data-edu='4'></select></div>
+<div class='field'><label for='canEdu'>Post-secondary study completed in Canada</label><select id='canEdu' name='canEdu'><option value='0'>None</option><option value='1'>Credential of one or two years</option><option value='2'>Credential of three years or longer</option></select></div></div>
+</fieldset>
+<fieldset><legend>Official languages</legend>
+<div class='field'><label for='firstLang'>First official language</label><select id='firstLang' name='firstLang'><option value='en'>English</option><option value='fr'>French</option></select></div>
+<p class='updated'>First language test results as CLB levels. <a href='clb-converter.html'>Convert IELTS, CELPIP or PTE scores</a>.</p>
+<div class='row4'><div><label for='l1'>Speaking</label><select id='l1' name='l1' data-clb='9'></select></div><div><label for='l2'>Listening</label><select id='l2' name='l2' data-clb='9'></select></div><div><label for='l3'>Reading</label><select id='l3' name='l3' data-clb='9'></select></div><div><label for='l4'>Writing</label><select id='l4' name='l4' data-clb='9'></select></div></div>
+<p class='updated' style='margin-top:14px'>Second official language (leave as is if you have no test).</p>
+<div class='row4'><div><label for='s1'>Speaking</label><select id='s1' name='s1' data-clb='0'></select></div><div><label for='s2'>Listening</label><select id='s2' name='s2' data-clb='0'></select></div><div><label for='s3'>Reading</label><select id='s3' name='s3' data-clb='0'></select></div><div><label for='s4'>Writing</label><select id='s4' name='s4' data-clb='0'></select></div></div>
+</fieldset>
+<fieldset><legend>Work and labour market integration</legend>
+<div class='row'><div class='field'><label for='cw'>Skilled work experience in Canada</label><select id='cw' name='cw'><option value='0'>None or less than a year</option><option value='1'>1 year</option><option value='2'>2 years</option><option value='3'>3 years</option><option value='4'>4 years</option><option value='5'>5 years or more</option></select></div>
+<div class='field'><label for='hw'>Of that, 12+ months in a high-wage occupation</label><select id='hw' name='hw'><option value='0'>No / not on the high-wage list</option><option value='20'>Yes, median wage at least 1.3x the average</option><option value='40'>Yes, at least 1.5x the average</option><option value='70'>Yes, at least 2x the average</option></select></div></div>
+<div class='row'><div class='field'><label for='jo'>Valid job offer in a high-wage occupation</label><select id='jo' name='jo'><option value='0'>No qualifying offer</option><option value='50'>Yes, 1.3x to under 1.5x</option><option value='70'>Yes, 1.5x to under 2x</option><option value='100'>Yes, 2x or more</option></select></div>
+<div class='field'><label for='fw'>Skilled work experience outside Canada</label><select id='fw' name='fw'><option value='0'>None or less than a year</option><option value='1'>1 or 2 years</option><option value='2'>3 years or more</option></select></div></div>
+<div class='field'><label for='cert'>Certificate of qualification in a trade from a province or territory</label><select id='cert' name='cert'><option value='0'>No</option><option value='1'>Yes</option></select></div>
+<p class='updated'>IRCC publishes the list of eligible high-wage occupations and their wage tier. You receive the higher of experience points or job offer points, never both.</p>
+</fieldset>
+<fieldset id='spouse-box' hidden><legend>Your spouse or partner</legend>
+<div class='row'><div class='field'><label for='sEdu'>Their highest education</label><select id='sEdu' name='sEdu' data-edu='4'></select></div>
+<div class='field'><label for='sCw'>Their skilled work in Canada</label><select id='sCw' name='sCw'><option value='0'>None or less than a year</option><option value='1'>1 year</option><option value='2'>2 years</option><option value='3'>3 years</option><option value='4'>4 years</option><option value='5'>5 years or more</option></select></div></div>
+<div class='row4'><div><label for='p1'>Speaking</label><select id='p1' name='p1' data-clb='0'></select></div><div><label for='p2'>Listening</label><select id='p2' name='p2' data-clb='0'></select></div><div><label for='p3'>Reading</label><select id='p3' name='p3' data-clb='0'></select></div><div><label for='p4'>Writing</label><select id='p4' name='p4' data-clb='0'></select></div></div>
+</fieldset>
+<fieldset><legend>Additional points</legend>
+<div class='row'><div class='field'><label for='sib'>Brother or sister living in Canada (citizen or PR, 18+)</label><select id='sib' name='sib'><option value='0'>No</option><option value='1'>Yes</option></select></div>
+<div class='field'><label for='pnp'>Provincial or territorial nomination</label><select id='pnp' name='pnp'><option value='0'>No</option><option value='1'>Yes</option></select></div></div>
+</fieldset>
+</form>
+<aside><div class='card score' id='crs-out' aria-live='polite'></div></aside>
+</div>
+<div class='ad' data-slot='mid'></div>
+<div class='prose'>
+<h2>How the CRS works after 3 November 2026</h2>
+<p>The Comprehensive Ranking System ranks everyone in the Express Entry pool. IRCC invites the highest-ranked candidates in each round, so your score only matters relative to the cut-off for the round types you qualify for.</p>
+<div class='tablewrap'><table><thead><tr><th>Section</th><th class='num'>With spouse</th><th class='num'>Without spouse</th></tr></thead><tbody>
+<tr><td>Age</td><td class='num'>100</td><td class='num'>110</td></tr>
+<tr><td>Education</td><td class='num'>140</td><td class='num'>150</td></tr>
+<tr><td>First official language</td><td class='num'>128</td><td class='num'>136</td></tr>
+<tr><td>Second official language</td><td class='num'>22</td><td class='num'>24</td></tr>
+<tr><td>Labour Market Integration (new)</td><td class='num'>140</td><td class='num'>150</td></tr>
+<tr><td><strong>Core / human capital total</strong></td><td class='num'><strong>530</strong></td><td class='num'><strong>570</strong></td></tr>
+<tr><td>Spouse or partner factors</td><td class='num'>40</td><td class='num'>&ndash;</td></tr>
+<tr><td>Skill transferability</td><td class='num'>100</td><td class='num'>100</td></tr>
+<tr><td>Additional points (nomination, French, sibling, Canadian study)</td><td class='num'>600</td><td class='num'>600</td></tr>
+</tbody></table></div>
+<h3>The Labour Market Integration factor</h3>
+<p>This factor replaced the stand-alone Canadian work experience row. It has two options, and IRCC applies whichever gives you more points:</p>
+<ul><li><strong>Canadian work experience.</strong> The familiar length-of-experience points (40 for one year up to 80 for five years, without a spouse) plus a bonus for at least 12 months in listed high-wage occupations: 20 points where the occupation's median wage is at least 1.3 times the average, 40 points at 1.5 times, 70 points at 2 times.</li>
+<li><strong>Qualifying job offer.</strong> 50, 70 or 100 points for a valid offer in a high-wage occupation, by the same wage tiers. An LMIA is no longer required, and an offer outside the high-wage list earns no CRS points, although it can still help with program eligibility.</li></ul>
+<p>Skill-transferability rules did not change. Twelve months means 1,560 hours, which can be part-time or split across jobs.</p>
+<h3>What moves a score most</h3>
+<ol><li><strong>Provincial nomination:</strong> 600 points.</li><li><strong>Language:</strong> the step from CLB 8 to CLB 9 in all four abilities is worth up to 32 core points and can double your skill-transferability points.</li><li><strong>French:</strong> NCLC 7 adds 25 or 50 points and opens French-language rounds.</li><li><strong>High-wage Canadian experience or job offer:</strong> up to 70 or 100 points since November 2026.</li><li><strong>A second credential or Canadian study:</strong> 15 to 30 additional points.</li></ol>
+<div class='notice'>This calculator gives an estimate for planning. IRCC calculates your official score when you submit an Express Entry profile. Source: <a href='https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/crs-criteria.html' rel='noopener'>IRCC CRS criteria</a> (page dated 3 November 2026).</div>
+</div>
+</div></main>
+<div id='site-footer'></div>
+<script src='assets/site.js'></script>
+<script src='assets/live.js'></script>
+<script src='assets/crs.js'></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Express Entry Draw Tracker: Latest Rounds, CRS Cut-offs and Pool Distribution</title>
+<meta name='description' content='Every Express Entry round of invitations with CRS cut-off, invitation count and category, plus cut-off trends and the current pool distribution. Updated automatically from IRCC data.'>
+<link rel='canonical' href='https://immigration-canada.com/draw-tracker.html'>
+<link rel='icon' href='assets/favicon.svg'>
+<link rel='stylesheet' href='assets/site.css'>
+<script async src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6620975821265271' crossorigin='anonymous'></script>
+</head>
+<body>
+<a class='topbar' href='https://web.works/contact'>Contact, if you are interested in this website / domain name / Sponsorship / Advertisement / Partnership &rarr;</a>
+<div id='site-header'></div>
+<main><div class='wrap' id='tracker'>
+<p class='crumbs'><a href='index.html'>Home</a> / Tools / Draw Tracker</p>
+<div class='page-head'><h1>Express Entry Draw Tracker</h1><p class='lede'>Rounds of invitations, cut-off scores and invitation counts, filterable by round type.</p><p class='updated' id='t-updated'></p></div>
+<div id='t-notice'></div>
+<div class='field' style='max-width:320px'><label for='t-type'>Round type</label><select id='t-type'></select></div>
+<div class='grid g4' id='t-stats'></div>
+<div class='card' style='margin:18px 0'><h3 class='mt0'>Cut-off trend</h3><div id='t-chart'></div></div>
+<div class='two'>
+<div><div class='tablewrap'><table><thead><tr><th>Round</th><th>Date</th><th>Program or category</th><th class='num'>Invitations</th><th class='num'>CRS cut-off</th></tr></thead><tbody id='t-body'></tbody></table></div></div>
+<aside>
+<div class='card'><h3 class='mt0'>Would my score have been invited?</h3><form id='t-check'><div style='display:flex;gap:8px'><input id='t-score' type='number' min='1' max='1300' placeholder='Your CRS score' aria-label='Your CRS score'><button class='btn sm'>Check</button></div></form><div id='t-result' style='margin-top:12px'></div><p class='updated'>Do not know your score? <a href='crs-calculator.html'>Use the calculator</a>.</p></div>
+<div class='card' style='margin-top:18px'><h3 class='mt0'>Who is in the pool</h3><div id='t-pool'></div></div>
+<div class='ad' data-slot='mid'></div>
+</aside>
+</div>
+<div class='prose'>
+<h2>How to read Express Entry rounds</h2>
+<p>IRCC holds three kinds of rounds. <strong>Program-specific rounds</strong> invite candidates eligible for one program, such as the Canadian Experience Class or the Provincial Nominee Program. <strong>Category-based rounds</strong> invite candidates with a particular attribute, such as French-language ability or experience in healthcare, trades or transport. <strong>General rounds</strong> invite the top-ranked candidates across all programs; the last one was held in April 2024.</p>
+<p>Cut-offs are only comparable within a round type. A Provincial Nominee Program cut-off in the 700s includes the 600 points every nominee receives, so the underlying score is in the 100s to 200s. French-language rounds have had the lowest regular cut-offs in 2026, between 382 and 435, because IRCC is working toward a target share of French-speaking admissions outside Quebec (9.5% for 2027, rising to 12% in 2029).</p>
+<p>When several candidates sit exactly on the cut-off, IRCC applies a tie-breaking rule based on the date and time each profile was submitted, so entering the pool earlier can matter.</p>
+<h3>After the November 2026 rule change</h3>
+<p>On 3 November 2026 many candidates with Canadian experience or job offers in high-wage occupations gained points. Because the whole pool was rescored at once, the first cut-offs after the pause are not a like-for-like continuation of the earlier trend. Treat pre-November cut-offs as context, not a forecast.</p>
+</div>
+</div></main>
+<div id='site-footer'></div>
+<script src='assets/site.js'></script>
+<script src='assets/live.js'></script>
+<script src='assets/tools.js'></script>
+</body>
+</html>
