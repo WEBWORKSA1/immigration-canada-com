@@ -1,10 +1,11 @@
 // Refreshes data/*.json from public official feeds. Runs in GitHub Actions (Node 20+, no dependencies).
 // Each source is independent: if one fails, the existing file is left untouched.
+// The outcome of each source is recorded in data/refresh-log.json.
 import { readFile, writeFile } from "node:fs/promises";
 
 const today = new Date().toISOString().slice(0, 10);
-const UA = { "User-Agent": "immigration-canada.com data refresh (GitHub Actions)" };
-const get = async (url, as = "text") => { const r = await fetch(url, { headers: UA }); if (!r.ok) throw new Error(`${r.status} ${url}`); return r[as](); };
+const UA = { "User-Agent": "Mozilla/5.0 (compatible; immigration-canada.com data refresh)", "Accept-Language": "en" };
+const get = async (url, as = "text") => { const r = await fetch(url, { headers: UA }); if (!r.ok) throw new Error(`HTTP ${r.status}`); return r[as](); };
 const num = v => Number(String(v ?? "").replace(/[^\d]/g, ""));
 const clean = s => String(s ?? "").replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, " ").trim();
 async function save(file, obj, label) {
@@ -17,7 +18,7 @@ async function save(file, obj, label) {
 
 async function draws() {
   const j = await get("https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json", "json");
-  const rounds = j.rounds.map(r => ({ n: num(r.drawNumber), date: r.drawDate, name: clean(r.drawName).replace(/,?\s*20\d\d-Version \d+/i, ""), size: num(r.drawSize), crs: num(r.drawCRS) }))
+  const rounds = j.rounds.map(r => ({ n: num(r.drawNumber), date: r.drawDate, name: clean(r.drawName).replace(/,?\s*20\d\d-Version \d+/i, "").replace(/\s*\(Version \d+\)/i, ""), size: num(r.drawSize), crs: num(r.drawCRS) }))
     .filter(r => r.n && /^\d{4}-\d{2}-\d{2}$/.test(r.date) && r.crs).sort((a, b) => b.n - a.n).slice(0, 200);
   if (rounds.length < 50) throw new Error("draw feed looks incomplete");
   const t = j.rounds.find(r => num(r.drawNumber) === rounds[0].n) || {};
@@ -30,9 +31,17 @@ async function draws() {
 }
 async function videos() {
   const cfg = JSON.parse(await readFile("data/videos.json", "utf8"));
-  const xml = await get(`https://www.youtube.com/feeds/videos.xml?channel_id=${cfg.channel}`);
-  const items = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)].map(m => ({ id: (m[1].match(/<yt:videoId>([^<]+)/) || [])[1], title: clean((m[1].match(/<title>([^<]*)/) || [])[1]), date: ((m[1].match(/<published>([^<]+)/) || [])[1] || "").slice(0, 10) })).filter(v => v.id).slice(0, 12);
-  if (!items.length) throw new Error("no videos parsed");
+  const feeds = [`channel_id=${cfg.channel}`, `playlist_id=UU${cfg.channel.slice(2)}`, "user=CitImmCanada"];
+  const errors = []; let items = [];
+  for (const q of feeds) {
+    try {
+      const xml = await get(`https://www.youtube.com/feeds/videos.xml?${q}`);
+      items = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)].map(m => ({ id: (m[1].match(/<yt:videoId>([^<]+)/) || [])[1], title: clean((m[1].match(/<title>([^<]*)/) || [])[1]), date: ((m[1].match(/<published>([^<]+)/) || [])[1] || "").slice(0, 10) })).filter(v => v.id).slice(0, 12);
+      if (items.length) break;
+      errors.push(`${q}: no entries`);
+    } catch (e) { errors.push(`${q}: ${e.message}`); }
+  }
+  if (!items.length) throw new Error(errors.join("; "));
   await save("data/videos.json", { updated: today, channel: cfg.channel, items }, "videos");
 }
 async function news() {
@@ -42,6 +51,8 @@ async function news() {
   if (!items.length) throw new Error("no news parsed");
   await save("data/news.json", { updated: today, items }, "news");
 }
+const log = {};
 for (const [name, fn] of [["draws", draws], ["videos", videos], ["news", news]]) {
-  try { await fn(); } catch (e) { console.log(`${name}: skipped (${e.message})`); }
+  try { await fn(); log[name] = "ok"; } catch (e) { log[name] = `failed: ${e.message}`; console.log(`${name}: skipped (${e.message})`); }
 }
+await writeFile("data/refresh-log.json", JSON.stringify(log, null, 1) + "\n");
