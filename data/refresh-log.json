@@ -1,5 +1,5 @@
 {
  "draws": "ok",
- "videos": "failed: channel_id=UC50bi5fNoYQk11lWhfi3l4w: HTTP 404; playlist_id=UU50bi5fNoYQk11lWhfi3l4w: HTTP 404; user=CitImmCanada: HTTP 404",
+ "videos": "ok",
  "news": "ok"
 }
